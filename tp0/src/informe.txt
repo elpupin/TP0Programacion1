@@ -1,0 +1,7 @@
+En las soluciones aplicamos encapsulamiento declarando todos los atributos como privados y 
+proporcionando métodos getter y setter para controlar el acceso y la modificación de los datos, 
+incluyendo validaciones en los setters para asegurar que los nombres y apellidos no estén vacíos, 
+las edades sean mayores a 16 y los promedios y calificaciones estén entre 0 y 10. Implementamos relaciones entre clases usando listas: 
+la clase Estudiante contiene una lista de Materia para gestionar sus materias y calcular sus promedios; la clase Carrera mantiene una lista de estudiantes para agregarlos, 
+listarlos y buscarlos; y la clase Universidad también tiene una lista de estudiantes para su gestión, estableciendo así una estructura organizada y coherente 
+entre las entidades.
