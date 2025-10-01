@@ -1,57 +1,50 @@
+
+import java.util.ArrayList;
+import java.util.List;  
+
 public class Carrera {
     private String nombre;
-    private String codigo;
-    private Universidad universidad;
-    private int duracion;
-    private Estudiante[] estudiantes;
-    private int cantidadEstudiantes;
-    private Materia[] materias;
-    private int cantidadMaterias;
+    private List<Estudiante> estudiantes;
 
-    //Constructor
-    public Carrera(String nombre, String codigo, int duracion) {
+    public Carrera(String nombre) {
         this.nombre = nombre;
-        this.codigo = codigo;
-        this.duracion = duracion;
+        estudiantes = new ArrayList<>();
     }
-    
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        if (nombre == null) {
+            nombre = "";
+        }
+        this.nombre = nombre.trim();
+    }
+
     public void agregarEstudiante(Estudiante estudiante) {
-        if (cantidadMaterias < estudiantes.length) {
-            this.estudiantes[cantidadEstudiantes] = estudiante;
-            cantidadEstudiantes++;
-        } else {
-            System.out.println("No se pueden agregar más estudiantes.");
+        if (estudiante != null) {
+            estudiantes.add(estudiante);
         }
     }
 
     public void listarEstudiantes() {
-        System.out.println("Nombre del primer alumno: " + estudiantes[0].getNombre());
-        
+        System.out.println("Estudiantes de la carrera " + nombre + ":");
+        for (Estudiante e : estudiantes) {
+            System.out.println("- " + e);
+        }
     }
 
-    public void buscarEstudiante(String nombre) {
-        
+    public Estudiante buscarEstudiante(String nombre) {
+        if (nombre == null || nombre.trim().isEmpty()) {
+            return null;
+        }
+        String nombreBuscado = nombre.trim().toLowerCase();
+        for (Estudiante e : estudiantes) {
+            if (e.getNombre().toLowerCase().equals(nombreBuscado)) {
+                return e;
+            }
+        }
+        return null;
     }
-
-    //Setters
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
-    public void setDuracion(int duracion) {
-        this.duracion = duracion;
-    }
-    public void setUniversidad(Universidad universidad) {
-        this.universidad = universidad;
-    }
-    public void setEstudiantes(Estudiante[] estudiantes) {
-        this.estudiantes = estudiantes;
-    }
-    public void setMaterias(Materia[] materias) {
-        this.materias = materias;
-    }
-
-
 }
